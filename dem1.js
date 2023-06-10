@@ -6,12 +6,14 @@
   //items[0].textContent = "Hello";
   //items[2].style.backgroundColor = 'green';
 //}
-const secondItem = document.querySelector('#items li:nth-child(2)');
-secondItem.style.backgroundColor = 'green';
+//const secondItem = document.querySelector('#items li:nth-child(2)');
+//secondItem.style.backgroundColor = 'green';
 
 
-const thirdItem = document.querySelector('#items li:nth-child(3)');
-thirdItem.style.visibility = 'hidden';
+//const thirdItem = document.querySelector('#items li:nth-child(3)');
+//thirdItem.style.visibility = 'hidden';
+var listItem = document.querySelector('.list-group-item');
+  listItem.innerHTML = 'Hello ' + listItem.innerHTML;
 
 
 
