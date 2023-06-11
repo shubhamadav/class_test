@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<h2>User Data Management</h2>
-  
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required><br><br>
-    
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required><br><br>
-    
-      <label for="phone">Phone Number:</label>
-      <input type="text" id="phone" name="phone" required><br><br>
-    
-      <input type="button" value="Submit" onclick="addData()">
-    </form>
-      <tbody id="data-table-body"></tbody
-  , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head> 
-<script src="./newuser.js"></script>
+</head>
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+      
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+      
+        <input type="button" value="Submit" onclick="addData()">
+        <input type="button" value="Delete" onclick="deleteData()">
+      </form>
+      
+     <script src="./newuser.js"></script>
+      
+      
 </body>
 </html>
