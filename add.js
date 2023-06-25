@@ -32,7 +32,7 @@ function deleteLastPost() {
   });
 }
 
-// Usage example:
+
 createPost("First post")
   .then((newPosts) => {
     console.log("Posts created:", newPosts);
