@@ -12,6 +12,13 @@ function addData() {
     email: email,
     phone: phone
   };
+     axios.post("https://crudcrud.com/Dashboard/df95452cd992446b850594472d58284e/studentdata",userData)
+      .then((Response)=>{
+           console.log(Response)
+      })
+      .catch((err)=>{
+           console.log(err);
+      })
   
   // Retrieve existing data from local storage or initialize an empty array
   var existingData = JSON.parse(localStorage.getItem("userData")) || [];
@@ -28,7 +35,7 @@ function addData() {
   }
   
   // Store the updated data in local storage
-  localStorage.setItem("userData", JSON.stringify(existingData));
+ // localStorage.setItem("userData", JSON.stringify(existingData));
   
   // Reset the form fields
   document.getElementById("name").value = "";
