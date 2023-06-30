@@ -1,51 +1,48 @@
-function updateLastUserActivityTime() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const lastActivityTime = new Date().toLocaleTimeString();
-      resolve(lastActivityTime);
-    }, 1000);
-  });
+
+async function fetchMenuItems() {
+  try {
+    const response = await fetch('https://crudcrud.com/api/df95452cd992446b850594472d58284e');
+    const menuItems = await response.json();
+    return menuItems;
+  } catch (error) {
+    console.error('Error fetching menu items:', error);
+  }
 }
 
-// Example usage:
-const posts = [];
+function displayMenu() {
+  const menuList = document.getElementById('menu-list');
 
-function createPost(post) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      posts.push(post);
-      resolve(posts);
-    }, 2000);
-  });
+  fetchMenuItems()
+    .then(menuItems => {
+      menuItems.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>${item.name} - $${item.price.toFixed(2)}</span>
+          <button onclick="addToCart(${item.id})">Add to Cart</button>
+        `;
+        menuList.appendChild(li);
+      });
+    });
 }
 
-function deleteLastPost() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (posts.length > 0) {
-        posts.pop();
-        resolve(posts);
-      } else {
-        reject(new Error("No posts to delete."));
-      }
-    }, 1500);
-  });
+function addToCart(itemId) {
+  fetchMenuItems()
+    .then(menuItems => {
+      const selectedItem = menuItems.find(item => item.id === itemId);
+      const cartItems = document.getElementById('cart-items');
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span>${selectedItem.name} - $${selectedItem.price.toFixed(2)}</span>
+        <button onclick="removeFromCart(${selectedItem.id})">Remove</button>
+      `;
+      cartItems.appendChild(li);
+
+      updateCartTotal();
+    });
 }
 
-
-createPost("First post")
-  .then((newPosts) => {
-    console.log("Posts created:", newPosts);
-    return updateLastUserActivityTime();
-  })
-  .then((lastActivityTime) => {
-    console.log("Last activity time:", lastActivityTime);
-    return deleteLastPost();
-  })
-  .then((updatedPosts) => {
-    console.log("Posts after deletion:", updatedPosts);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
-
+function removeFromCart(itemId) {
+  const cartItems = document.getElementById('cart-items');
+  const itemToRemove = document.querySelector(`#cart-items');
+};
