@@ -1,48 +1,28 @@
 
-async function fetchMenuItems() {
-  try {
-    const response = await fetch('https://crudcrud.com/api/df95452cd992446b850594472d58284e');
-    const menuItems = await response.json();
-    return menuItems;
-  } catch (error) {
-    console.error('Error fetching menu items:', error);
-  }
-}
+document.addEventListener('DOMContentLoaded', function() {
+  
+  var reservationForm = document.getElementById('reservation-form');
+  var tableSelect = document.getElementById('table');
+  var priceInput = document.getElementById('price');
+  var dishInput = document.getElementById('dish');
 
-function displayMenu() {
-  const menuList = document.getElementById('menu-list');
+  reservationForm.addEventListener('submit', function(event) {
+    event.preventDefault(); 
 
-  fetchMenuItems()
-    .then(menuItems => {
-      menuItems.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <span>${item.name} - $${item.price.toFixed(2)}</span>
-          <button onclick="addToCart(${item.id})">Add to Cart</button>
-        `;
-        menuList.appendChild(li);
-      });
-    });
-}
+    var selectedTable = tableSelect.value;
+    var price = priceInput.value;
+    var dish = dishInput.value;
+    
+    console.log('Table: ' + selectedTable);
+    console.log('Price: ' + price);
+    console.log('Dish: ' + dish); 
 
-function addToCart(itemId) {
-  fetchMenuItems()
-    .then(menuItems => {
-      const selectedItem = menuItems.find(item => item.id === itemId);
-      const cartItems = document.getElementById('cart-items');
+    var menuList = document.getElementById('menu-list');
+    var listItem = document.createElement('li');
+    listItem.textContent = 'Table: ' + selectedTable + ', Price: ' + price + ', Dish: ' + dish;
+    menuList.appendChild(listItem);
 
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <span>${selectedItem.name} - $${selectedItem.price.toFixed(2)}</span>
-        <button onclick="removeFromCart(${selectedItem.id})">Remove</button>
-      `;
-      cartItems.appendChild(li);
-
-      updateCartTotal();
-    });
-}
-
-function removeFromCart(itemId) {
-  const cartItems = document.getElementById('cart-items');
-  const itemToRemove = document.querySelector(`#cart-items');
-};
+    priceInput.value = '';
+    dishInput.value = '';
+  });
+});

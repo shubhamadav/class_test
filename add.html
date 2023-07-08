@@ -1,11 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Local Variable Example</title>
-  <link rel="stylesheet" type="text/css" href="add.css">
+  <title>Restaurant Application</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  
+  <main>
+    <section id="menu">
+      <h2>Menu</h2>
+      <ul id="menu-list"></ul>
+    </section>
+    <section id="reservation">
+      <h2>Reservation</h2>
+      <form id="reservation-form">
+        <label for="table">Choose Table:</label>
+        <select id="table" name="table">
+          <option value="1">Table 1</option>
+          <option value="2">Table 2</option>
+          <option value="3">Table 3</option>
+        </select>
+        <br>
+        <br>
+        <label for="price">Choose Price:</label>
+        <input type="text" id="price" name="price" required>
+        <br>
+        <br>
+        <label for="dish">Choose Dish:</label>
+        <input type="text" id="dish" name="dish" required>
+        <br>
+        <br>
+        <input type="submit" value="Add to bill">
+        <input type="submit" value="Delete">
+      </form>
+    </section>
 
-  <script src="add.js"></script>
-</body>
+    <script src="add.js"></script>
+  </body>
 </html>
